@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Caller | Home
+
+{% endblock%}
+
+{% block 'body' %}
+
+<style>
+    body {
+        background-image: url("https://images.pexels.com/photos/5553638/pexels-photo-5553638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        padding-bottom: 100px;
+    }
+    /* body {
+        background: #0F2027;
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); 
+    } */
+    h1 {
+        width: 350px;
+        padding: 20px;
+        /* margin: auto; */
+        background-color: rgba(20,30,40, 0.5);
+        border-radius: 20px;
+        color: white;
+        text-align: center;
+    }
+
+    .card {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border: 10px solid white;
+        transition: all 0.3s;
+    }
+    
+    .card:hover {
+        /* border-bottom: 20px solid springgreen; */
+        transform: scale(1.03);
+    }
+
+    /* .card-body {
+        border-top: 6px solid rgb(72, 74, 77);
+    } */
+
+    /* .card-body {
+        background-color: rgb(10,40,40);
+    } */
+</style>
+
+<div class="container">
+  <br>
+  <h1>Home | Cursos</h1>
+  <div class="row">
+      
+
+      {% for i in cursos %}
+
+          <div style="margin-top: 20px;" class="col-md">
+              <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" width="200" height="180" src="{{i.thumb.url}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{i.nome}}</h5>
+                    <p class="card-text">{{i.descricao}}</p>
+                    <a href="{% url 'curso' i.id%}" class="btn btn-primary">Acessar</a>
+                  </div>
+                </div>
+          </div>
+        
+      {% endfor %}
+
+
+  </div>
+
+</div>
+{% endblock %}
